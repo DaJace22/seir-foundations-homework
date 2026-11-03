@@ -1,0 +1,27 @@
+AI Review — Lesson 1 Runbook
+Name: Jason N.
+AI used: Claude (Anthropic)
+Conversation link: https://claude.ai/share/46529327-fa87-44be-85d1-9c4c5b276d73
+
+Q1: What does "dnf" mean in "sudo dnf install -y git"?
+AI's answer (my words): It means Dandified YUM and is a package manager used to download, install, update, and remove software in the command line.
+How I checked it: Binged "dnf in aws"
+
+Q2: Why did "venv/bin/activate" give "Permission denied"?
+AI's answer (my words): Excluded keyword 'source'. When it's excluded, command line executed the line as a program instead. Execute starts new shell, Sourcing runs inside current. Execute requires execute permission while Sourcing is read permission. 
+How I checked it: Ran "source venv/bin/activate" instead and saw (venv) appear in my prompt.
+
+Q3: Does "uvicorn app.main:app --host 0.0.0.0 --port 8000" start the server?
+AI's answer (my words): Yes, it is the command that starts uvicorn. 
+How I checked it: Ran it and saw "Application startup complete."
+
+Q4: What do return codes 0, 4, 8, and 12 mean?
+AI's answer (my words): The number the Balerica COBOL program leaves after it runs. Checked using 'echo $?'. 0 = Success, 4 = Warning, 8 = Business rejection, 12 = Environment failure.  
+How I checked it: Triggered each one on purpose and confirmed with "echo $?" (cobol_rc screenshots).
+
+Q5: How do I decode Alice's balance from the fixed-width ledger?
+AI's answer (my words): We use the ledger's fixed-width layout and the cut command. PIC 9(10)V99 implies the invisible decimal point.  
+How I checked it: Ran "cut -c45-56 data/accounts.dat", got 000000500000, and confirmed 5000.00 with account_lookup.
+
+Where the AI was wrong, vague, or out of date:
+During Run 1, the AI's instructions about when to take the screenshot were confusing. It first said the screenshot comes at the end, then seemed to say something had to come before uvicorn. I had to ask, and it clarified that the ID line (a command) goes before uvicorn and the screenshot comes after. 

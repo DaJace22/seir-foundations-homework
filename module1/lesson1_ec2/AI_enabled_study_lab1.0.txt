@@ -1,0 +1,39 @@
+Databases
+	There are two main types of databases. Relational and Non-Relational. Relational databases store data in tables using rows and columns. There’s usually a key in one table that ‘relates’ to another table (Primary Key/Foreign Key). Non-Relational databases store different data types such as documents, key/value pairs, and graphs. It’s used more for storing and retrieving different, unrelated documents. Personally, I use MS SQL mostly in my career. 
+Sources:
+SQL vs. NoSQL: What's the difference? 2021
+Relational vs Nonrelational Databases - Difference Between Types of Databases - AWS 2026
+Claude AI Opus 5.5 Medium
+
+COBOL
+	COBOL stands for COmmon Business Orientated Language. The coding language uses a column based format. For example, the first 6 digits are the line numbers. Column 7 dictates either a comment, or line continuation. Columns 8-11 identify divisions, sections, and paragraphs. Columns 12-72 are the actual code. 72 is the limit in order to fit on a punch card. COBOL is one of the oldest coding languages and is used by many banks. It’s in high demand because most of the coders are either retired or dead. 
+Sources:
+COBOL in 100 seconds 2020
+COBOL - Wikipedia 2026
+Theo WAF (Conclave 2025)
+Claude AI Opus 5.5 Medium
+
+SWIFT
+	SWIFT stands for Society for Worldwide Interbank Financial Telecommunication. It was established in 1973 to move money from one currency to another digitally. It handles the transactions from the appropriate accounts by sending messages for deductions or additions. It updates the users’ transaction details digitally, while the banks themselves handle the monetary changes internally. As of 2015, SWIFT linked more than 11,000 banks in over 200 countries and territories. ISO 20022 is the newer messaging standard SWIFT moved to for cross-border payments, replacing the older MT format. MT messages use short, tagged text fields with tight character limits, while ISO 20022 uses structured XML that can carry more detailed data, like structured addresses and detailed payment information. The two main swaps are MT103 to pacs.008 for customer payments and MT202 to pacs.009 for bank-to-bank transfers. SWIFT ran both starting in March 2023 until 22 November 2025. Since then, old MT payment instructions only get a limited contingency conversion, so receiving banks get ISO 20022 only.
+Sources: 
+SWIFT - Wikipedia 2026
+Foreign Exchange 101: What Happens When You Send Money Abroad? 2023
+ISO 20022: MT to ISO 20022 Conversion | Swift 2025
+Claude AI Opus 5.5 Medium
+
+APIs
+	REST (the most common style behind modern APIs) stands for Representational State Transfer, and API stands for Application Programming Interface. It’s a software interface for passing information, usually in a request and response format. Some common HTTP style methods are Post, Get, Put, and Delete. These are equivalent to CRUD. A request would usually consist of a header (e.g. for authentication), endpoint, method used, and any parameters passed. APIs are how most AI models are used. 
+Sources: 
+Overview of HTTP - HTTP | MDN 2026
+What is a REST API? 2020
+Claude AI Opus 5.5 Medium
+
+The Intersection
+	Offhand, ADDI (Application Discover and Delivery Intelligence) seems to be a very valuable tool I could have used in previous roles; if there’s a similar tool compatible with SSMS. But I digress. Putting the above topics together, we see how our lab worked this week. We used SWIFT to generate traffic. We used APIs to access the accounts and payments. COBOL is the base coding language for our bank. And pertinent data is stored in the database. 
+Sources:
+GAO-25-107795, INFORMATION TECHNOLOGY: Agencies Need to Plan for Modernizing Critical Decades-Old Legacy Systems 2025
+Technical Debt and Modernizing COBOL 2023
+Claude AI Opus 5.5 Medium
+
+Next-lab prep: GET vs POST, JSON, and validation
+	GET only retrieves data, so it’s safe to repeat. In our lab, GET /accounts/100001 looked up Alice’s account. POST sends data in the request body to create or change something, like POST /payments submitting a payment. JSON (JavaScript Object Notation) is the text format most APIs use to send that data, built from key-value pairs like {"question": "What does return code 8 mean?"} from our /ask call. APIs must validate incoming data because anything sent by a client could be wrong or malicious, so the rule is never trust input. In our lab, FastAPI rejects badly formed JSON with an HTTP 422 error before it reaches COBOL, and the COBOL core then applies business rules, like rejecting a zero-dollar payment with return code 8. Checking at more than one layer like this is called defense in depth.
